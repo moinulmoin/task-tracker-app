@@ -1,25 +1,24 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { nanoid } from 'nanoid';
 import { useGlobalState } from '../context/GlobalState';
 
+type inputRef = {
+	current: null | any;
+};
+
 function AddTask() {
-	const { state, dispatch } = useGlobalState();
+	const inputRef: inputRef = useRef(null);
+	const { dispatch } = useGlobalState();
 	const submitHandler = (e: React.SyntheticEvent) => {
 		e.preventDefault();
-		const newObj = { id: nanoid(), name: state.inputValue };
+		const newObj = { id: nanoid(), name: inputRef.current.value };
 		dispatch({ type: 'newTodo', payload: newObj });
 		dispatch({ type: 'clearValue' });
-	};
-	const changeHandler = (e: React.SyntheticEvent) => {
-		dispatch({ type: 'changeValue', payload: e.target.value });
+		inputRef.current.value = '';
 	};
 	return (
 		<form onSubmit={submitHandler}>
-			<input
-				type="text"
-				value={state.inputValue}
-				onChange={changeHandler}
-			/>
+			<input type="text" ref={inputRef} />
 			<button type="submit">Add Task</button>
 		</form>
 	);

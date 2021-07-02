@@ -2,7 +2,6 @@ import React, { useContext, useReducer } from 'react';
 
 type state = {
 	todos: todos[];
-	inputValue: string;
 };
 type action = {
 	type: string;
@@ -14,20 +13,9 @@ type todos = {
 };
 const initialState: state = {
 	todos: [],
-	inputValue: '',
 };
 const reducer = (state: typeof initialState, action: action) => {
 	switch (action.type) {
-		case 'changeValue':
-			return {
-				...state,
-				inputValue: action.payload,
-			};
-		case 'clearValue':
-			return {
-				...state,
-				inputValue: '',
-			};
 		case 'newTodo':
 			return {
 				...state,
