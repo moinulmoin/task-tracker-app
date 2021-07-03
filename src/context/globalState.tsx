@@ -1,18 +1,21 @@
 import React, { useContext, useReducer } from 'react';
 
 type state = {
-	todos: todos[];
+	todos: todo[];
+	position: number;
 };
 type action = {
 	type: string;
 	payload: any;
 };
-type todos = {
-	id: 'string';
-	name: 'string';
+type todo = {
+	id: string;
+	name: string;
+	position: number;
 };
 const initialState: state = {
 	todos: [],
+	position: 0,
 };
 const reducer = (state: typeof initialState, action: action) => {
 	switch (action.type) {

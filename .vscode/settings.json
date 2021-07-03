@@ -1,8 +1,5 @@
 {
-	"cSpell.ignoreWords": [
-        "todolist",
-        "todos"
-    ],
+	"cSpell.ignoreWords": ["todolist", "todos"],
 	"editor.fontFamily": "Operator Mono Lig",
 	"editor.fontSize": 18,
 	"editor.defaultFormatter": "esbenp.prettier-vscode"
