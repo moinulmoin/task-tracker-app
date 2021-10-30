@@ -13,13 +13,19 @@ type todo = {
 	name: string;
 	position: number;
 };
+
+interface StateProviderProps {
+	children: React.ReactNode;
+}
+
 const initialState: state = {
 	todos: [],
 	position: 0,
 };
+
 const reducer = (state: typeof initialState, action: action) => {
 	switch (action.type) {
-		case 'newTodo':
+		case 'NEW_TODO':
 			return {
 				...state,
 				todos: [...state.todos, action.payload],
@@ -35,11 +41,7 @@ const GlobalState = React.createContext<{
 
 export const useGlobalState = () => useContext(GlobalState);
 
-interface StateProviderProps {
-	children: React.ReactNode;
-}
-
-export const StateProvider = ({
+export const GlobalStateProvider = ({
 	children,
 }: StateProviderProps): JSX.Element => {
 	const [state, dispatch] = useReducer(reducer, initialState);

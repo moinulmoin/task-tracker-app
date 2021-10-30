@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {StateProvider} from './context/GlobalState';
+import { GlobalStateProvider } from './context/GlobalState';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<StateProvider>
+		<GlobalStateProvider>
 			<App />
-		</StateProvider>
+		</GlobalStateProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );
