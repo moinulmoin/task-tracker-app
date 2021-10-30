@@ -11,11 +11,7 @@ function Todos() {
 			)}
 			{state.todos.length > 0 &&
 				state.todos.map((todo) => (
-					<Todo
-						key={todo.id}
-						todoName={todo.name}
-						position={todo.position}
-					/>
+					<Todo key={todo.id} todoName={todo.name} />
 				))}
 		</ul>
 	);

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 interface StateProviderProps {
 	children: React.ReactNode;
@@ -30,19 +30,19 @@ export const useThemeContext = () => useContext(ThemeContext);
 export const ThemeProvider = ({ children }: StateProviderProps) => {
 	const [theme, setTheme] = React.useState(getInitialTheme);
 
-	const rawSetTheme = (rawTheme: string) => {
+	const toggleTheme = () => {
 		const root = window.document.documentElement;
-		const isDark = rawTheme === 'dark';
 
-		root.classList.remove(isDark ? 'light' : 'dark');
-		root.classList.add(rawTheme);
+		theme === 'dark'
+			? root.classList.add(theme)
+			: root.classList.remove('dark');
 
-		localStorage.setItem('color-theme', rawTheme);
+		localStorage.setItem('color-theme', theme);
 	};
 
-	React.useEffect(() => {
-		rawSetTheme(theme);
-	}, [theme]);
+	useEffect(() => {
+		toggleTheme();
+	});
 
 	return (
 		<ThemeContext.Provider value={{ theme, setTheme }}>

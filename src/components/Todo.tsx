@@ -1,7 +1,7 @@
 import { CheckCircleIcon, PencilAltIcon } from '@heroicons/react/solid';
 import React from 'react';
 
-function Todo({ todoName }: { todoName: string; position: number }) {
+function Todo({ todoName }: { todoName: string }) {
 	return (
 		<li className='flex justify-between gap-10 dark:bg-white dark:text-gray-900 bg-gray-900 text-white font-semibold py-4 px-4 rounded'>
 			<p>{todoName}</p>
