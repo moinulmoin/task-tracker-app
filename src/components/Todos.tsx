@@ -5,8 +5,10 @@ import Todo from './Todo';
 function Todos() {
 	const { state } = useGlobalState();
 	return (
-		<ul>
-			{state.todos.length === 0 && <li> Yoo! Nothing to do 🔥🔥</li>}
+		<ul className='w-6/12'>
+			{state.todos.length === 0 && (
+				<li className='text-center'> Yoo! Nothing to do 🔥🔥</li>
+			)}
 			{state.todos.length > 0 &&
 				state.todos.map((todo) => (
 					<Todo

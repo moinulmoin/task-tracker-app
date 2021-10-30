@@ -8,13 +8,12 @@ type inputRef = {
 
 function AddTask() {
 	const inputRef: inputRef = useRef(null);
-	const { state, dispatch } = useGlobalState();
+	const { dispatch } = useGlobalState();
 	const handleAddTodo = (e: React.SyntheticEvent) => {
 		e.preventDefault();
 		const newTodo = {
 			id: nanoid(),
 			name: inputRef.current.value,
-			position: ++state.position,
 		};
 		dispatch({ type: 'NEW_TODO', payload: newTodo });
 		inputRef.current.value = '';

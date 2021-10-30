@@ -9,6 +9,7 @@ const ThemeToggle = () => {
 		<div className='transition duration-500 ease-in-out rounded-full p-2'>
 			{theme === 'dark' ? (
 				<SunIcon
+					role='button'
 					onClick={() =>
 						setTheme(theme === 'dark' ? 'light' : 'dark')
 					}
@@ -16,6 +17,7 @@ const ThemeToggle = () => {
 				/>
 			) : (
 				<MoonIcon
+					role='button'
 					onClick={() =>
 						setTheme(theme === 'dark' ? 'light' : 'dark')
 					}

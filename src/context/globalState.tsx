@@ -2,7 +2,6 @@ import React, { useContext, useReducer } from 'react';
 
 type state = {
 	todos: todo[];
-	position: number;
 };
 type action = {
 	type: string;
@@ -20,7 +19,6 @@ interface StateProviderProps {
 
 const initialState: state = {
 	todos: [],
-	position: 0,
 };
 
 const reducer = (state: typeof initialState, action: action) => {
