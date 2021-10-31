@@ -2,5 +2,5 @@
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.formatOnSave": true,
 	"css.validate": false,
-	"cSpell.words": ["Prefs", "todos"]
+	"cSpell.words": ["Prefs", "semibold", "todos"]
 }

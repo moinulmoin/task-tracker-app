@@ -8,15 +8,34 @@ type inputRef = {
 
 function AddTask() {
 	const inputRef: inputRef = useRef(null);
-	const { dispatch } = useGlobalState();
-	const handleAddTodo = (e: React.SyntheticEvent) => {
+
+	const { fetchAllTodos } = useGlobalState();
+
+	const handleAddTodo = async (e: React.SyntheticEvent) => {
 		e.preventDefault();
+
 		const newTodo = {
 			id: nanoid(),
-			name: inputRef.current.value,
+			title: inputRef.current.value,
 		};
-		dispatch({ type: 'NEW_TODO', payload: newTodo });
-		inputRef.current.value = '';
+
+		try {
+			const res = await fetch('http://localhost:5000/todos', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(newTodo),
+			});
+
+			if (!res.ok) {
+				throw new Error('Oops! Something went wrong');
+			}
+
+			fetchAllTodos();
+		} catch (error: any) {
+			alert(error.message);
+		}
 	};
 	return (
 		<form className='w-6/12 flex gap-4'>

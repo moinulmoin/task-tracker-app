@@ -20,10 +20,7 @@ const getInitialTheme = () => {
 	return 'light'; // light theme as the default;
 };
 
-export const ThemeContext = React.createContext<{
-	theme: string;
-	setTheme: React.Dispatch<React.SetStateAction<string>>;
-}>({ theme: getInitialTheme(), setTheme: () => {} });
+export const ThemeContext = React.createContext<null | any>(null);
 
 export const useThemeContext = () => useContext(ThemeContext);
 
