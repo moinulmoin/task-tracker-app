@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useGlobalState } from '../context/GlobalState';
+import Spinner from './Spinner';
 import Todo from './Todo';
 
 interface todo {
@@ -12,17 +13,18 @@ function Todos() {
 
 	const { todos, loading } = state;
 
+	const handleFetchTodos = async () => {
+		await dispatch({ type: 'TOGGLE_LOADING', payload: true });
+		await fetchAllTodos();
+		await dispatch({ type: 'TOGGLE_LOADING', payload: false });
+	};
 	useEffect(() => {
-		dispatch({ type: 'TOGGLE_LOADING', payload: true });
-		fetchAllTodos();
-		dispatch({ type: 'TOGGLE_LOADING', payload: false });
+		handleFetchTodos();
 	}, []);
 
 	return (
 		<ul className='w-6/12 flex flex-col gap-4'>
-			{loading && todos.length === 0 && (
-				<li className='text-center'>Loading!</li>
-			)}
+			{loading && todos.length === 0 && <Spinner />}
 			{!loading && todos.length === 0 && (
 				<li className='text-center'> Yoo! Nothing to do 🔥🔥</li>
 			)}
