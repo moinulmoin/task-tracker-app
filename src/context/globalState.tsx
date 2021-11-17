@@ -1,13 +1,15 @@
 import React, { useContext, useReducer } from 'react';
 
-type state = {
+interface state {
 	todos: object[];
 	loading: boolean;
-};
-type action = {
+	buttonName: string;
+	currentTask: object;
+}
+interface action {
 	type: string;
 	payload: any;
-};
+}
 
 interface StateProviderProps {
 	children: React.ReactNode;
@@ -16,9 +18,11 @@ interface StateProviderProps {
 const initialState: state = {
 	todos: [],
 	loading: false,
+	buttonName: 'Add Task',
+	currentTask: {},
 };
 
-const reducer = (state: typeof initialState, action: action) => {
+const reducer = (state: state, action: action) => {
 	switch (action.type) {
 		case 'TOGGLE_LOADING':
 			return {
@@ -30,6 +34,16 @@ const reducer = (state: typeof initialState, action: action) => {
 			return {
 				...state,
 				todos: action.payload,
+			};
+		case 'UPDATE_BUTTON':
+			return {
+				...state,
+				buttonName: action.payload,
+			};
+		case 'UPDATE_CURRENT_TODO':
+			return {
+				...state,
+				currentTask: action.payload,
 			};
 	}
 	return state;

@@ -1,7 +1,7 @@
 {
-	"name": "react-typescript-todo",
+	"name": "react-typescript-app",
 	"version": "1.0.0",
-	"description": "A React Typescript Todo App",
+	"description": "A React Typescript App",
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
