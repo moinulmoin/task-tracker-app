@@ -23,7 +23,7 @@ function TaskList() {
 	}, []);
 
 	return (
-		<ul className='w-6/12 flex flex-col gap-4'>
+		<ul className='flex flex-col w-6/12 gap-4'>
 			{loading && todos.length === 0 && <Spinner />}
 			{!loading && todos.length === 0 && (
 				<li className='text-center'> Yoo! Nothing to do 🔥🔥</li>

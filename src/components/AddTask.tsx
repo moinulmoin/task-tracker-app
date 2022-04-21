@@ -84,11 +84,11 @@ function AddTask() {
 	};
 
 	return (
-		<form className='w-6/12 flex gap-4'>
+		<form className='flex w-6/12 gap-4'>
 			<input
 				type='text'
 				ref={inputRef}
-				className='text-gray-800 w-10/12 rounded'
+				className='w-10/12 px-2 font-medium text-white bg-gray-800 rounded dark:bg-white dark:text-gray-800 focus:outline-0'
 			/>
 			<button
 				type='submit'

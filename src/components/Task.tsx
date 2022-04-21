@@ -48,17 +48,17 @@ function Task({ todoName, id }: { todoName: string; id: string }) {
 		}
 	};
 	return (
-		<li className='flex justify-between gap-10 dark:bg-white dark:text-gray-900 bg-gray-900 text-white font-semibold py-4 px-4 rounded'>
+		<li className='flex justify-between gap-10 px-4 py-4 font-semibold text-white bg-gray-900 rounded dark:bg-white dark:text-gray-900'>
 			<p>{todoName}</p>
 			<div className='flex gap-5'>
 				<PencilAltIcon
 					role='button'
-					className='text-blue-500 w-6 h-6'
+					className='w-6 h-6 text-blue-500'
 					onClick={() => handleGetTodo(id)}
 				/>
 				<CheckCircleIcon
 					role='button'
-					className='text-green-500 w-6 h-6'
+					className='w-6 h-6 text-green-500'
 					onClick={() => handleCompleteTodo(id)}
 				/>
 			</div>
